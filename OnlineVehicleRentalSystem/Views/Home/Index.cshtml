@@ -1,0 +1,216 @@
+﻿@using OnlineVehicleRentalSystem.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div data-vide-bg="video/video">
+    <div class="container">
+        <div class="banner-info">
+            <h3 style="color:#5F9EA0">
+                Enjoy your life
+
+            </h3>
+            <div class="search-form">
+                <form action="#" method="post">
+                    <input type="text" placeholder="Search..." name="Search...">
+                    <input type="submit" value=" ">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--content-->
+<div class="content-top ">
+    <div class="container ">
+        <div class="spec ">
+            <h3>Today Booking Available</h3>
+            <div class="ser-t">
+                <b></b>
+                <span><i></i></span>
+                <b class="line"></b>
+            </div>
+        </div>
+        <div class="tab-head ">
+
+            <div class=" tab-content tab-content-t ">
+                <div class="tab-pane active text-style" id="tab1">
+                    <div class=" con-w3l">
+                        @{
+                            List<tblVehicle> myitem = ItemDB.GetAllRecentItem();
+                            foreach (var item in myitem)
+                            {
+                                <div class="col-md-3 m-wthree">
+                                    <div class="col-m">
+
+                                        @* <a href="@Url.Action("ViewItem", "Home", new { id = item.ItemId })" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" class="viewitem"><span class="fa fa-search"></span></a>*@
+                                        <a href="@Url.Action("ViewItem", "Home", new { id = item.VehicleId })" data-toggle="modal" data-target="#myModal" class="viewitem">
+                                            <img src="~/images/ItemImages/@item.SmallImage" class="img-responsive" alt="">
+                                        </a>
+                                        <div class="mid-1">
+                                            <div class="women">
+                                                <h6><a href="single.html">@item.Title</a></h6>
+                                            </div>
+
+                                            <div class="mid-2">
+
+                                                <p> <b>Price:</b><label>@item.Price</label></p>
+
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="add">
+                                                <a class="btn btn-danger my-cart-btn" href="@Url.Action("AddToCart","ShoppingCart", new { id = item.VehicleId }, "")"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        }
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!--content-->
+<div class="content-mid">
+    <div class="container">
+
+        <div class="col-md-4 m-w3ls">
+            <div class="col-md1 ">
+                <a href="kitchen.html">
+                    <img src="images/co1.jpg" class="img-responsive img" alt="">
+                    <div class="big-sa">
+
+                        <h3></h3>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4 m-w3ls1">
+            <div class="col-md ">
+                <a href="hold.html">
+                    <img src="images/co.jpg" class="img-responsive img" alt="">
+                    <div class="big-sale">
+                        <div class="big-sale1">
+                            <h3></h3>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4 m-w3ls">
+            <div class="col-md2 ">
+                <a href="kitchen.html">
+                    <img src="images/co2.jpg" class="img-responsive img1" alt="">
+                    <div class="big-sale2">
+                        <h3></h3>
+
+                    </div>
+                </a>
+            </div>
+            <div class="col-md3 ">
+                <a href="hold.html">
+                    <img src="images/co3.jpg" class="img-responsive img1" alt="">
+                    <div class="big-sale3">
+                        <h3></h3>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--content-->
+<!-- Carousel
+================================================== -->
+<!--content-->
+<div class="product">
+    <div class="container">
+        <div class="spec ">
+            <h3>Listing Of Vehicle</h3>
+            <div class="ser-t">
+                <b></b>
+                <span><i></i></span>
+                <b class="line"></b>
+            </div>
+        </div>
+        <div class=" con-w3l">
+
+
+            @{
+                List<tblVehicle> myitemlist = ItemDB.GetAllFoodRecentItem();
+                foreach (var item in myitemlist)
+                {
+                    <div class="col-md-3 pro-1">
+                        <div class="col-m">
+                            <a href="@Url.Action("ViewItem", "Home", new { id = item.VehicleId })" data-toggle="modal" data-target="#myModal" class="viewitem">
+                                <img src="~/images/ItemImages/@item.SmallImage" class="img-responsive" alt="">
+                            </a>
+                            <div class="mid-1">
+                                <div class="women">
+                                    <h6><a href="single.html">@item.Title</a></h6>
+                                </div>
+                                <div class="mid-2">
+                                    <p><label>@item.Price</label></p>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="add add-2">
+
+                                    <a class="btn btn-danger" href="@Url.Action("AddToCart","ShoppingCart", new { id = item.VehicleId }, "")"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+            <a class="btn btn-info my-cart-btn" href="@Url.Action("ProductList","Home")">View More</a>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-info">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="divForUpdate">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('.viewitem').click(function (event) {
+            event.preventDefault();
+            $.get(this.href, function (response) {
+                $('.divForUpdate').html(response);
+            });
+            $('#quick-view-modal').modal({
+                backdrop: 'static',
+            }, 'show');
+        });
+    });
+</script>
